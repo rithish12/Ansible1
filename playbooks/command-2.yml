@@ -1,0 +1,24 @@
+---
+# This is my first playbook
+
+# HEADER SECTION
+ - name: This playbook will capture the output of a module execution
+   hosts: webservers
+   vars:
+     abc: Goutham
+
+# TASK SECTION
+   tasks:
+     - name: To execute the package module and capture the output into output variable
+       package:
+         name: git
+         state: present
+       register: capture_data
+
+     - name: To print a value of a variable capture_data
+       debug:
+         var: capture_data
+
+     - name: To print a value of a variable abc
+       debug:
+         var: abc

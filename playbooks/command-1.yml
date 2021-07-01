@@ -1,0 +1,24 @@
+---
+# This is my first playbook
+
+# HEADER SECTION
+ - name: This playbook will create a file
+   hosts: webservers
+
+# TASK SECTION
+   tasks:
+     - name: To create a folder using command module
+       command: mkdir -p /opt/command
+       args:
+         chdir: /opt
+         creates: /opt/command
+
+     - name: To redirect the contents of hosts file to ipaddress.txt
+       shell: cat /etc/hosts > ipaddress.txt
+       args:
+         chdir: /opt
+
+     - name: To excute a shell script on the remote machine
+       script: myfile.sh
+       args:
+         chdir: /opt

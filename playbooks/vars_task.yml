@@ -1,0 +1,22 @@
+---
+# This is my first playbook
+
+# HEADER SECTION
+ - name: This playbook will create a file
+   hosts: webservers
+
+# TASK SECTION
+   tasks:
+     - name: To install package named "{{ local_var }}"
+       package:
+         name: "{{ local_var }}"
+         state: absent
+       vars:
+         local_var: unzip
+
+     - name: To create a file named "{{ local_var }}"
+       file:
+         name: /opt/{{ local_var }}
+         state: touch
+       vars:
+         local_var: helloworld.txt
